@@ -1,0 +1,40 @@
+
+<!-- The main node definition that is registered with the editor. This defines things such as the palette category, the editable properties (defaults) and what icon to use. It is within a regular javascript script tag -->
+<script type="text/javascript">
+	RED.nodes.registerType('Kafka Producer', {
+		category:'storage',
+		color: '#FFFFFF',
+		defaults: {
+			name: {value:""},
+			zkquorum: {value:"", required: true},
+			topic: {value:"", required: true}
+		},
+		inputs:1,
+		outputs:1,
+		icon: "kafka_logo.png",
+		label: function() {
+			return this.name||"Kafka Producer"
+		}
+	});
+</script>
+
+<!-- The edit template that defines the content of the edit dialog for the node. It is defined in a script of type 'text/x-red' with 'data-template-name' set to the type of the node. -->
+<script type="text/x-red" data-template-name="Kafka Producer">
+	<div class="form-row">
+		<label for="node-input-name"><i class="icon-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-zkquorum"><i class="icon-tag"></i> zkquorum</label>
+		<input type="text" id="node-input-zkquorum" placeholder="localhost:2181">
+	</div>
+	<div class="forum-row">
+		<label for="node-input-topic"><i class="icon-tag"></i> Topic(s)</label>
+		<input type="text" id="node-input-topic" placeholder="Topic(s)">
+	</div>
+</script>
+
+<!-- The help text that gets displayed in the info sidebar tab. It is defined in a script of type 'text/x-red' with data-help-name set to the type of the node. -->
+<script type="text/x-red" data-help-name="Kafka Producer">
+	<p>A node that feeds message payloads into Apache Kafka</p>
+</script>
